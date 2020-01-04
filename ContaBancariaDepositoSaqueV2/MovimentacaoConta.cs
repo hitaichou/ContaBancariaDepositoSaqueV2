@@ -46,7 +46,20 @@ namespace ContaBancariaDepositoSaqueV2
         }
 
         //GET/SET
-        public string GetTitular()
+        //Propertie
+        public string Titular
+        {
+            get { return _titular; }
+            set
+                { //atribui nome se o nome não for nulo e tamanho for maior que 1
+                  //a entrada do dado é através do parâmetro value
+                    if (value != null && value.Length > 1)
+                    {
+                        _titular = value;
+                    }
+                }
+        }
+        /*public string GetTitular()
         {
             return _titular;
         }
@@ -57,9 +70,21 @@ namespace ContaBancariaDepositoSaqueV2
             {
                 _titular = titular;
             }            
+        }*/
+
+        public int Conta
+        {
+            get { return _conta; }
+            set { _conta = value; }
         }
 
-        public double GetDeposito()
+        public double Deposito
+        {
+            get { return _vlDeposito; }
+            set { _vlDeposito = value; }
+        }
+
+        /*public double GetDeposito()
         {
             return _vlDeposito;
         }
@@ -67,9 +92,15 @@ namespace ContaBancariaDepositoSaqueV2
         public void SetDeposito(double deposito)
         {
             _vlDeposito = deposito;
+        }*/
+
+        public double Saque
+        {
+            get { return _vlSaque; }
+            set { _vlSaque = value; }
         }
 
-        public double GetSaque()
+        /*public double GetSaque()
         {
             return _vlSaque;
         }
@@ -77,7 +108,7 @@ namespace ContaBancariaDepositoSaqueV2
         public void SetSaque(double saque)
         {
             _vlSaque = saque;
-        }
+        }*/
 
         //METODOS
         public void AdicionarSaldo (double deposito)
