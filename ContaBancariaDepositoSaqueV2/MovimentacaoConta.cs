@@ -27,7 +27,8 @@ namespace ContaBancariaDepositoSaqueV2
 
         public MovimentacaoConta(double deposito)
         {
-            Deposito = Deposito + deposito;
+            //Chamando o método de adição direta do saldo
+            AdicionarSaldo(deposito);
         }
 
         //GET/SET

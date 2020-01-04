@@ -18,18 +18,12 @@ namespace ContaBancariaDepositoSaqueV2
             Console.Write("Haverá depósito inicial (s/n)? ");
             string flagDep = Console.ReadLine();
 
-            if (flagDep == "s")
+            if (flagDep == "s" || flagDep == "S")
             {
                 Console.Write("Entre o valor do depósito inicial: ");                                                
                 mc.Deposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                 mc.AdicionarSaldo(mc.Deposito);
                 Console.WriteLine();
-
-                //Mostra resultado e pula uma linha
-                //Console.WriteLine("Dados da conta:");
-                //Console.WriteLine(mc);
-
-                //Console.WriteLine();
             }
             //Mostra resultado e pula uma linha
             Console.WriteLine("Dados da conta:");
@@ -55,7 +49,7 @@ namespace ContaBancariaDepositoSaqueV2
             Console.WriteLine();
 
             //Mostra resultado e pula uma linha
-            Console.WriteLine("Dados da conta:");
+            Console.WriteLine("Dados da conta atualizados:");
             Console.WriteLine(mc);
 
             Console.WriteLine();
@@ -67,7 +61,7 @@ namespace ContaBancariaDepositoSaqueV2
             mc.RemoverSaldo(mc.Saque);
 
             //Mostra resultado e pula uma linha
-            Console.WriteLine("Dados da conta:");
+            Console.WriteLine("Dados da conta atualizados:");
             Console.WriteLine(mc);
         }
     }
