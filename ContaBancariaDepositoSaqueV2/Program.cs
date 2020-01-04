@@ -26,10 +26,10 @@ namespace ContaBancariaDepositoSaqueV2
                 Console.WriteLine();
 
                 //Mostra resultado e pula uma linha
-                Console.WriteLine("Dados da conta:");
-                Console.WriteLine(mc);
+                //Console.WriteLine("Dados da conta:");
+                //Console.WriteLine(mc);
 
-                Console.WriteLine();
+                //Console.WriteLine();
             }
             //Mostra resultado e pula uma linha
             Console.WriteLine("Dados da conta:");

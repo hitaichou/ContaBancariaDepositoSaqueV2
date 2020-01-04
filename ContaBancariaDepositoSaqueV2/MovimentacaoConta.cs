@@ -8,10 +8,11 @@ namespace ContaBancariaDepositoSaqueV2
         //ATRIBUTOS
         //Usando auto-propertie
         public int Conta { get; private set; }
-        private string _titular;
         public double Deposito { get; set; }
         public double Saque { get; set; }
-        private double _vlSaldo = 0;
+        public double Saldo { get; set; }
+        private string _titular;                
+
         //CONSTRUTORES
         public MovimentacaoConta(int conta, string titular)
         {
@@ -19,10 +20,8 @@ namespace ContaBancariaDepositoSaqueV2
             _titular = titular;
         }
 
-        public MovimentacaoConta(int conta, string titular, double deposito)
+        public MovimentacaoConta(int conta, string titular, double deposito) : this(conta, titular)
         {
-            Conta = conta;
-            _titular = titular;
             Deposito = deposito;
         }
 
@@ -49,13 +48,12 @@ namespace ContaBancariaDepositoSaqueV2
         //METODOS
         public void AdicionarSaldo (double deposito)
         {
-            //VlSaldo = VlSaldo + deposito;
-            _vlSaldo = _vlSaldo + deposito;
+            Saldo = Saldo + deposito;
         }
 
         public void RemoverSaldo (double saque)
         {
-            _vlSaldo = (_vlSaldo - Saque) - 5.00;
+            Saldo = (Saldo - Saque) - 5.00;
         }
 
         //Sobreposição        
@@ -66,7 +64,7 @@ namespace ContaBancariaDepositoSaqueV2
                  + ", Titular: "
                  + _titular
                  + ", Saldo: "
-                 + _vlSaldo.ToString("F2", CultureInfo.InvariantCulture); //tratamento
+                 + Saldo.ToString("F2", CultureInfo.InvariantCulture); //tratamento
                 
         }
 
