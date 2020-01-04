@@ -14,18 +14,25 @@ namespace ContaBancariaDepositoSaqueV2
         public double VlSaldo = 0;
         */
         //Trocando variáveis da classe de public para private
-        private int _conta;
+        /*private int _conta;
         private string _titular;
         private double _vlDeposito;
         private double _vlSaque;
         private double _vlSaldo = 0;
-
+        */
+        //Usando auto-propertie
+        public int Conta { get; private set; }
+        private string _titular;
+        public double Deposito { get; set; }
+        public double Saque { get; set; }
+        private double _vlSaldo = 0;
         //CONSTRUTORES
         public MovimentacaoConta(int conta, string titular)
         {
             //Conta = conta;
             //Titular = titular;            
-            _conta = conta;
+            //_conta = conta;
+            Conta = conta;
             _titular = titular;
         }
 
@@ -34,15 +41,16 @@ namespace ContaBancariaDepositoSaqueV2
             //Conta = conta;
             //Titular = titular;
             //VlDeposito = deposito;
-            _conta = conta;
+            Conta = conta;
             _titular = titular;
-            _vlDeposito = deposito;
+            Deposito = deposito;
         }
 
         public MovimentacaoConta(double deposito)
         {
             //VlDeposito = VlDeposito + deposito;
-            _vlDeposito = _vlDeposito + deposito;
+            //_vlDeposito = _vlDeposito + deposito;
+            Deposito = Deposito + deposito;
         }
 
         //GET/SET
@@ -72,17 +80,19 @@ namespace ContaBancariaDepositoSaqueV2
             }            
         }*/
 
-        public int Conta
+        /*public int Conta
         {
             get { return _conta; }
             set { _conta = value; }
         }
+        */
 
-        public double Deposito
+        /*public double Deposito
         {
             get { return _vlDeposito; }
             set { _vlDeposito = value; }
         }
+        */
 
         /*public double GetDeposito()
         {
@@ -94,11 +104,12 @@ namespace ContaBancariaDepositoSaqueV2
             _vlDeposito = deposito;
         }*/
 
-        public double Saque
+        /*public double Saque
         {
             get { return _vlSaque; }
             set { _vlSaque = value; }
         }
+        */
 
         /*public double GetSaque()
         {
@@ -121,14 +132,15 @@ namespace ContaBancariaDepositoSaqueV2
         {
             //VlSaldo = (VlSaldo - saque) - 5.00;
             //_vlSaldo = (_vlSaldo - saque) - 5.00;
-            _vlSaldo = (_vlSaldo - _vlSaque) - 5.00;
+            //_vlSaldo = (_vlSaldo - _vlSaque) - 5.00;
+            _vlSaldo = (_vlSaldo - Saque) - 5.00;
         }
 
         //Sobreposição        
         public override string ToString()
         {
             return "Conta: "
-                 + _conta
+                 + Conta
                  + ", Titular: "
                  + _titular
                  + ", Saldo: "
