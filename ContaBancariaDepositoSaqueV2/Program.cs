@@ -14,28 +14,52 @@ namespace ContaBancariaDepositoSaqueV2
             Console.Write("Entre o titular da conta: ");            
             string titular = Console.ReadLine();
 
+            MovimentacaoConta mc = new MovimentacaoConta(conta, titular);
+
             Console.Write("Haverá depósito inicial (s/n)? ");
             string flagDep = Console.ReadLine();
 
             if (flagDep == "s")
             {
                 Console.Write("Entre o valor do depósito inicial: ");                                
-                vldeposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);                
+                //vldeposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                mc.SetDeposito(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
+                mc.AdicionarSaldo(mc.GetDeposito());
+                Console.WriteLine();
+
+                Console.WriteLine("Dados da conta:");
+                Console.WriteLine(mc);
+
+                Console.WriteLine();
             }
-            MovimentacaoConta mc = new MovimentacaoConta(conta, titular, vldeposito);
+            //MovimentacaoConta mc = new MovimentacaoConta(conta, titular, vldeposito);
 
-            mc.AdicionarSaldo(vldeposito);
-            Console.WriteLine();
+            //mc.AdicionarSaldo(vldeposito);
+            //mc.AdicionarSaldo(mc.GetDeposito());
+            //Console.WriteLine();
 
-            Console.WriteLine("Dados da conta:");
-            Console.WriteLine(mc);
+            //Console.WriteLine("Dados da conta:");
+            //Console.WriteLine(mc);
 
+            //Console.WriteLine();
+
+            Console.Write("Deseja alterar o nome (s/n)? ");
+            string flagNome = Console.ReadLine();
+
+            if (flagNome == "s")
+            {
+                Console.Write("Entre o novo nome: ");
+                mc.SetTitular(Console.ReadLine());
+                Console.WriteLine(mc.GetTitular());
+            }
             Console.WriteLine();
 
             Console.Write("Entre um valor para depósito: ");
-            vldeposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            //vldeposito = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            mc.SetDeposito(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
 
-            mc.AdicionarSaldo(vldeposito);
+            //mc.AdicionarSaldo(vldeposito);
+            mc.AdicionarSaldo(mc.GetDeposito());
             Console.WriteLine();
 
             Console.WriteLine("Dados da conta:");
@@ -44,15 +68,14 @@ namespace ContaBancariaDepositoSaqueV2
             Console.WriteLine();
 
             Console.Write("Entre um valor para saque: ");
-            double vlSaque = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            //double vlSaque = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            mc.SetSaque(double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture));
 
-            mc.RemoverSaldo(vlSaque);            
+            //mc.RemoverSaldo(vlSaque);            
+            mc.RemoverSaldo(mc.GetSaque());
 
             Console.WriteLine("Dados da conta:");
             Console.WriteLine(mc);
-
-
-
         }
     }
 }
