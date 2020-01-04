@@ -1,37 +1,56 @@
 ﻿using System;
 using System.Globalization;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ContaBancariaDepositoSaqueV2
 {
     class MovimentacaoConta
     {
-        public int _conta;
-        public string _titular;
-        public double _vlDeposito;
-        public double _vlSaque;
-        public double _vlSaldo = 0;
+        //ATRIBUTOS
+        public int Conta;
+        public string Titular;
+        public double VlDeposito;
+        //public double _vlSaque;
+        public double VlSaldo = 0;
 
+        //CONSTRUTORES
+        public MovimentacaoConta(int conta, string titular)
+        {
+            Conta = conta;
+            Titular = titular;            
+        }
+
+        public MovimentacaoConta(int conta, string titular, double deposito)
+        {
+            Conta = conta;
+            Titular = titular;
+            VlDeposito = deposito;
+        }
+
+        public MovimentacaoConta(double deposito)
+        {
+            VlDeposito = VlDeposito + deposito;
+        }
+
+        //METODOS
         public void AdicionarSaldo (double deposito)
         {
-            _vlSaldo = _vlSaldo + deposito;
+            VlSaldo = VlSaldo + deposito;
         }
 
         public void RemoverSaldo (double saque)
         {
-            _vlSaldo = (_vlSaldo - saque) - 5.00;
+            VlSaldo = (VlSaldo - saque) - 5.00;
         }
 
         //Sobreposição        
         public override string ToString()
         {
             return "Conta: "
-                 + _conta
+                 + Conta
                  + ", Titular: "
-                 + _titular
+                 + Titular
                  + ", Saldo: "
-                 + _vlSaldo.ToString("F2", CultureInfo.InvariantCulture); //tratamento
+                 + VlSaldo.ToString("F2", CultureInfo.InvariantCulture); //tratamento
                 
         }
 
